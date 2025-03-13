@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace NatureHubApi.Model.Domain
 {
@@ -24,6 +25,7 @@ namespace NatureHubApi.Model.Domain
 
         // Navigation Properties
         public List<OrderItem>? OrderItems { get; set; }
+        [JsonIgnore]
         public List<CartItem>? CartItems { get; set; }
     }
 

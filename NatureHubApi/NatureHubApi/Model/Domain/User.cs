@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace NatureHubApi.Model.Domain
 {
@@ -19,7 +20,9 @@ namespace NatureHubApi.Model.Domain
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation Properties
+        [JsonIgnore]
         public List<Order>? Orders { get; set; }
+        [JsonIgnore]
         public List<CartItem>? CartItems { get; set; }
     }
 }

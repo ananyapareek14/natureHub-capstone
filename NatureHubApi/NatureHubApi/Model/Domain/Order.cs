@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace NatureHubApi.Model.Domain
 {
@@ -22,6 +23,7 @@ namespace NatureHubApi.Model.Domain
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
 
         // Navigation Properties
+        [JsonIgnore]
         public List<OrderItem> OrderItems { get; set; } = new();
     }
 

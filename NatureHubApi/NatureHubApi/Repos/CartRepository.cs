@@ -45,6 +45,24 @@ namespace NatureHubApi.Repos
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> UpdateCartItemAsync(CartItem cartItem)
+        {
+            var existingItem = await _context.CartItems.FindAsync(cartItem.Id);
+            if (existingItem == null)
+                return false;
+
+            existingItem.Quantity = cartItem.Quantity;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        public async Task<decimal> CalculateCartTotalAsync(Guid userId)
+        {
+            return await _context.CartItems
+                .Where(ci => ci.UserId == userId)
+                .Include(ci => ci.Product)
+                .SumAsync(ci => ci.Product!.Price * ci.Quantity);
+        }
     }
 
 }

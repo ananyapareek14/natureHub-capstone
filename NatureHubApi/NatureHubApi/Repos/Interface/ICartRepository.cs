@@ -9,5 +9,7 @@ namespace NatureHubApi.Repos.Interface
         Task<CartItem?> GetCartItemAsync(Guid userId, Guid productId);
         Task<CartItem> AddToCartAsync(CartItem cartItem);
         Task<bool> RemoveFromCartAsync(int cartItemId);
+        Task<bool> UpdateCartItemAsync(CartItem cartItem);
+        Task<decimal> CalculateCartTotalAsync(Guid userId);
     }
 }

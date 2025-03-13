@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace NatureHubApi.Model
+namespace NatureHubApi.Model.Domain
 {
     public class CartItem
     {

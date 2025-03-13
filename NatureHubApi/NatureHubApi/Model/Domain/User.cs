@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace NatureHubApi.Model
+namespace NatureHubApi.Model.Domain
 {
     public class User
     {
@@ -8,13 +8,13 @@ namespace NatureHubApi.Model
         public Guid Id { get; set; } = Guid.NewGuid();  // Unique identifier
 
         [Required, MaxLength(100)]
-        public string? Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required, EmailAddress]
-        public string? Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required]
-        public string? PasswordHash { get; set; }  // Store hashed password
+        public string PasswordHash { get; set; } = string.Empty;  // Store hashed password
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 

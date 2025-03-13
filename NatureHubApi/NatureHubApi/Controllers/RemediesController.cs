@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NatureHubApi.Data;
-using NatureHubApi.Model;
+using NatureHubApi.Model.Domain;
 
 namespace NatureHubApi.Controllers
 {

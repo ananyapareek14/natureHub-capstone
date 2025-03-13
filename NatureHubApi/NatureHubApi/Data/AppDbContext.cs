@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NatureHubApi.Model;
+using NatureHubApi.Model.Domain;
 
 namespace NatureHubApi.Data
 {

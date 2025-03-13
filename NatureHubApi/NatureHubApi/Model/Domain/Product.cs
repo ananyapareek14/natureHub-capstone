@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace NatureHubApi.Model
+namespace NatureHubApi.Model.Domain
 {
     public class Product
     {

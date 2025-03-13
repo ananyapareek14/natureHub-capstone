@@ -17,12 +17,12 @@ namespace NatureHubApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("NatureHubApi.Model.CartItem", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.CartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace NatureHubApi.Migrations
                     b.ToTable("CartItems");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.HealthTip", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.HealthTip", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -68,6 +68,9 @@ namespace NatureHubApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -78,7 +81,7 @@ namespace NatureHubApi.Migrations
                     b.ToTable("HealthTips");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.Order", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,7 +108,7 @@ namespace NatureHubApi.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.OrderItem", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,11 +137,15 @@ namespace NatureHubApi.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.Product", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -162,7 +169,7 @@ namespace NatureHubApi.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.Remedy", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.Remedy", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -170,11 +177,24 @@ namespace NatureHubApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Benefits")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ingredients")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -182,12 +202,20 @@ namespace NatureHubApi.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("PreparationMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsageInstructions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Remedies");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.User", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -214,15 +242,15 @@ namespace NatureHubApi.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.CartItem", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.CartItem", b =>
                 {
-                    b.HasOne("NatureHubApi.Model.Product", "Product")
+                    b.HasOne("NatureHubApi.Model.Domain.Product", "Product")
                         .WithMany("CartItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NatureHubApi.Model.User", "User")
+                    b.HasOne("NatureHubApi.Model.Domain.User", "User")
                         .WithMany("CartItems")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -233,9 +261,9 @@ namespace NatureHubApi.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.Order", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.Order", b =>
                 {
-                    b.HasOne("NatureHubApi.Model.User", "User")
+                    b.HasOne("NatureHubApi.Model.Domain.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -244,15 +272,15 @@ namespace NatureHubApi.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.OrderItem", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.OrderItem", b =>
                 {
-                    b.HasOne("NatureHubApi.Model.Order", "Order")
+                    b.HasOne("NatureHubApi.Model.Domain.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NatureHubApi.Model.Product", "Product")
+                    b.HasOne("NatureHubApi.Model.Domain.Product", "Product")
                         .WithMany("OrderItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -263,19 +291,19 @@ namespace NatureHubApi.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.Order", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.Order", b =>
                 {
                     b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.Product", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.Product", b =>
                 {
                     b.Navigation("CartItems");
 
                     b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("NatureHubApi.Model.User", b =>
+            modelBuilder.Entity("NatureHubApi.Model.Domain.User", b =>
                 {
                     b.Navigation("CartItems");
 

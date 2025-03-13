@@ -1,4 +1,4 @@
-﻿using NatureHubApi.Model;
+﻿using NatureHubApi.Model.Domain;
 using NatureHubApi.Repos.Generic;
 
 namespace NatureHubApi.Repos.Interface

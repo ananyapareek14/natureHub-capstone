@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NatureHubApi.Data;
-using NatureHubApi.Model;
+using NatureHubApi.Model.Domain;
 using NatureHubApi.Repos.Generic;
 using NatureHubApi.Repos.Interface;
 

@@ -12,14 +12,17 @@ namespace NatureHubApi.Model.Domain
         public int Quantity { get; set; }
 
         [Required]
-        public decimal Price { get; set; }  // Price at the time of purchase
+        public decimal Price { get; set; } // Price at the time of purchase
 
         [Required, ForeignKey("Order")]
         public Guid OrderId { get; set; }
-        public required Order Order { get; set; }
+        public Order? Order { get; set; } // Made nullable
 
         [Required, ForeignKey("Product")]
         public Guid ProductId { get; set; }
-        public required Product Product { get; set; }
+        public Product? Product { get; set; } // Made nullable
+
+        public decimal TotalPrice => Quantity * Price; // Auto-calculated total price
     }
+
 }

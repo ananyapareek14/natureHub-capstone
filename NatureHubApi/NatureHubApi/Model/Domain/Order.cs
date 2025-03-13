@@ -6,7 +6,7 @@ namespace NatureHubApi.Model.Domain
     public class Order
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid(); // Changed from int to Guid
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
@@ -16,12 +16,19 @@ namespace NatureHubApi.Model.Domain
 
         [Required, ForeignKey("User")]
         public Guid UserId { get; set; }
-        public required User User { get; set; }
+        public User? User { get; set; } // Made nullable
 
-        [Required, MaxLength(20)]
-        public string Status { get; set; } = "Pending"; // "Pending", "Completed"
+        [Required]
+        public OrderStatus Status { get; set; } = OrderStatus.Pending;
 
         // Navigation Properties
         public List<OrderItem> OrderItems { get; set; } = new();
+    }
+
+    public enum OrderStatus
+    {
+        Pending,
+        Completed,
+        Canceled
     }
 }

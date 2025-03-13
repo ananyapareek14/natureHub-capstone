@@ -5,7 +5,7 @@ namespace NatureHubApi.Model.Domain
     public class Product
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid(); // Changed from int to Guid
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required, MaxLength(200)]
         public string? Name { get; set; }
@@ -19,9 +19,12 @@ namespace NatureHubApi.Model.Domain
 
         public int StockQuantity { get; set; }
 
+        [Required, MaxLength(100)]
+        public string Category { get; set; } = string.Empty; // Made required
+
         // Navigation Properties
         public List<OrderItem>? OrderItems { get; set; }
         public List<CartItem>? CartItems { get; set; }
-        public string Category { get; internal set; }
     }
+
 }

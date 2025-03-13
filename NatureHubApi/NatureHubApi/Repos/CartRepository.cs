@@ -6,13 +6,45 @@ using NatureHubApi.Repos.Interface;
 
 namespace NatureHubApi.Repos
 {
-    public class CartRepository : Repository<CartItem>, ICartRepository
+    public class CartRepository : ICartRepository
     {
-        public CartRepository(AppDbContext context) : base(context) { }
+        private readonly AppDbContext _context;
+
+        public CartRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task<IEnumerable<CartItem>> GetCartItemsByUserIdAsync(Guid userId)
         {
-            return await _context.CartItems.Include(ci => ci.Product).Where(ci => ci.UserId == userId).ToListAsync();
+            return await _context.CartItems
+                .Where(ci => ci.UserId == userId)
+                .Include(ci => ci.Product)
+                .ToListAsync();
+        }
+
+        public async Task<CartItem?> GetCartItemAsync(Guid userId, Guid productId)
+        {
+            return await _context.CartItems.FirstOrDefaultAsync(ci => ci.UserId == userId && ci.ProductId == productId);
+        }
+
+        public async Task<CartItem> AddToCartAsync(CartItem cartItem)
+        {
+            _context.CartItems.Add(cartItem);
+            await _context.SaveChangesAsync();
+            return cartItem;
+        }
+
+        public async Task<bool> RemoveFromCartAsync(int cartItemId)
+        {
+            var cartItem = await _context.CartItems.FindAsync(cartItemId);
+            if (cartItem == null)
+                return false;
+
+            _context.CartItems.Remove(cartItem);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
+
 }

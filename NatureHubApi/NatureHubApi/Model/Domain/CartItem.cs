@@ -10,15 +10,16 @@ namespace NatureHubApi.Model.Domain
 
         [Required, ForeignKey("User")]
         public Guid UserId { get; set; }
-        public required User User { get; set; }
+        public User? User { get; set; } // Made nullable
 
         [Required, ForeignKey("Product")]
         public Guid ProductId { get; set; }
-        public required Product Product { get; set; }
+        public Product? Product { get; set; } // Made nullable
 
         [Required]
         public int Quantity { get; set; }
 
         public DateTime AddedAt { get; set; } = DateTime.UtcNow;
     }
+
 }

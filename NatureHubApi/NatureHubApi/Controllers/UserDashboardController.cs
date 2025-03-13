@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace NatureHubApi.Controllers
 {
-    [Route("api/user-dashboard")]
+    [Route("api/dashboard")]
     [ApiController]
     [Authorize] // Ensures only authenticated users can access
     public class UserDashboardController : ControllerBase

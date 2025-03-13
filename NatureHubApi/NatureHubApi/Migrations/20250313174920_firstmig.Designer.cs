@@ -12,8 +12,8 @@ using NatureHubApi.Data;
 namespace NatureHubApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250313084725_FirstMig")]
-    partial class FirstMig
+    [Migration("20250313174920_firstmig")]
+    partial class firstmig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

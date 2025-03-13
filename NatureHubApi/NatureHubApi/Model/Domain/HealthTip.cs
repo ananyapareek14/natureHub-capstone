@@ -18,5 +18,4 @@ namespace NatureHubApi.Model.Domain
 
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
-
 }

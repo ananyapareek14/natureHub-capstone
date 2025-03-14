@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- Logo & Site Name -->
+      <a class="navbar-brand" routerLink="/">
+        <span class="ms-2 fw-bold">Nature Hub</span>
+      </a>
+  
+      <!-- Toggle Button for Mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" routerLink="/remedies">Remedies</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/health-tips">Health Tips</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/shop">Shop</a></li>
+  
+          <!-- Show User Dashboard if Logged In -->
+          <li *ngIf="isLoggedIn()" class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </li>
+  
+          <!-- Login / Logout -->
+          <li class="nav-item" *ngIf="!isLoggedIn()">
+            <a class="btn btn-primary btn-sm" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+              {{ userName }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+              <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

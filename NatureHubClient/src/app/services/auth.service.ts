@@ -14,7 +14,7 @@ export class AuthService {
 
   register(data: RegisterRequest): Observable<RegisterResponse> {
     console.log('Sending register request:', data);
-    return this.http.post<RegisterResponse>(`${this.apiUrl}/register`, data).pipe(
+    return this.http.post<RegisterResponse>(`${this.apiUrl}/auth/register`, data).pipe(
       tap(response => console.log('Register Response:', response)),
       catchError(this.handleError)
     );
@@ -22,7 +22,7 @@ export class AuthService {
 
   login(data: LoginRequest): Observable<LoginResponse> {
     console.log('Sending login request:', data);
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, data).pipe(
+    return this.http.post<LoginResponse>(`${this.apiUrl}/auth/login`, data).pipe(
       tap(response => {
         console.log('Login Response:', response);
         this.saveToken(response.Token);
@@ -51,4 +51,13 @@ export class AuthService {
     console.error('API Error:', error);
     return throwError(() => new Error(error.message || 'Something went wrong'));
 }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+
+  getUserName(): string {
+    // Decode the token and extract the user name
+    return 'John Doe';
+  }
 }

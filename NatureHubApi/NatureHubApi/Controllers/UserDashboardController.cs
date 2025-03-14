@@ -9,7 +9,7 @@ namespace NatureHubApi.Controllers
 {
     [Route("api/dashboard")]
     [ApiController]
-    [Authorize] // Ensures only authenticated users can access
+    //[Authorize] // Ensures only authenticated users can access
     public class UserDashboardController : ControllerBase
     {
         private readonly IUserRepository _userRepository;

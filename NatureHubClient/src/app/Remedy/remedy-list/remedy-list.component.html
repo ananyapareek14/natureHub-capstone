@@ -1,1 +1,67 @@
-<p>remedy-list works!</p>
+<!-- <div class="container mt-4">
+  <div class="remedy-header d-flex justify-content-between align-items-center">
+    <h1>🌿 Natural Remedies</h1>
+    <div class="filter-container">
+      <label for="remedyFilter" class="me-2">Filter by Category:</label>
+      <select id="remedyFilter" [(ngModel)]="selectedCategory" (change)="filterRemedies()" class="form-select">
+        <option value="">All Categories</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div *ngFor="let remedy of filteredRemedies" class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ remedy.Name }}</h5>
+          <p class="card-text">{{ remedy.Description }}</p>
+          <p><strong>🍃 Ingredients:<br></strong> {{ remedy.Ingredients }}</p>
+          <p>
+  <strong>✨ Benefits:<br></strong> 
+  <span [innerHTML]="formatText(remedy.Benefits)"></span>
+</p>
+
+          <p><strong>📝 Preparation:<br></strong>  <span [innerHTML]="formatText(remedy.PreparationMethod)"></span></p>
+          <p><strong>💡 Usage:<br></strong>  <span [innerHTML]="formatText(remedy.Benefits)"></span></p>
+          <p><button class="btn btn-primary">Know More</button></p>
+          <p class="text-muted small">📅 Created on: {{ remedy.CreatedDate | date:'MMM d, y' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container mt-4">
+  <div class="row">
+    <div *ngFor="let remedy of remedies" class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ remedy.Name }}</h5>
+          <p class="card-text">{{ remedy.Description }}</p>
+          <button class="btn btn-primary" [routerLink]="['/remedies', remedy.Id]">Know More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Remedy Details Modal -->
+  <!-- <div *ngIf="selectedRemedy" class="modal fade show d-block" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ selectedRemedy.Name }}</h5>
+          <button type="button" class="btn-close" (click)="selectedRemedy = null"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>✨ Benefits:</strong></p>
+          <p [innerHTML]="selectedRemedy.Benefits.replace(/\\n/g, '<br>')"></p>
+          <p><strong>🍃 Ingredients:</strong> {{ selectedRemedy.Ingredients }}</p>
+          <p><strong>📝 Preparation:</strong> {{ selectedRemedy.PreparationMethod }}</p>
+          <p><strong>💡 Usage:</strong> {{ selectedRemedy.UsageInstructions }}</p>
+          <p class="text-muted">📅 Created on: {{ selectedRemedy.CreatedDate | date:'MMM d, y' }}</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

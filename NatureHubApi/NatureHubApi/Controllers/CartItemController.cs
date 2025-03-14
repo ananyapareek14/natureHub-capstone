@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NatureHubApi.Model.Domain;
 using NatureHubApi.Model.DTO;
 using NatureHubApi.Repos.Interface;
+using System.Security.Claims;
 
 namespace NatureHubApi.Controllers
 {
@@ -41,7 +42,16 @@ namespace NatureHubApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart([FromBody] CartItemDto cartItemDto)
         {
-            var existingCartItem = await _cartRepository.GetCartItemAsync(cartItemDto.UserId, cartItemDto.ProductId);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out Guid userId))
+            {
+                return Unauthorized("Invalid or missing User ID in token.");
+            }
+
+            cartItemDto.UserId = userId;
+
+            var existingCartItem = await _cartRepository.GetCartItemAsync(userId, cartItemDto.ProductId);
             if (existingCartItem != null)
             {
                 existingCartItem.Quantity += cartItemDto.Quantity;
@@ -50,7 +60,7 @@ namespace NatureHubApi.Controllers
             {
                 existingCartItem = new CartItem
                 {
-                    UserId = cartItemDto.UserId,
+                    UserId = userId,
                     ProductId = cartItemDto.ProductId,
                     Quantity = cartItemDto.Quantity
                 };

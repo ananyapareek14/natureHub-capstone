@@ -12,9 +12,9 @@ export class NavbarComponent {
   userName: string = '';
 
   constructor(private authService: AuthService, private router: Router) {
-    if (this.isLoggedIn()) {
-      this.userName = this.authService.getUserName();
-    }
+    // if (this.isLoggedIn()) {
+    //   this.userName = this.authService.getUserName();
+    // }
   }
 
   isLoggedIn(): boolean {

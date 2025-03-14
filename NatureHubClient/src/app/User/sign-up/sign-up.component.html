@@ -1,9 +1,8 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
+<!-- <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow-lg" style="width: 350px;">
       <h3 class="text-center mb-4">Sign Up</h3>
   
       <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-        <!-- Name Field -->
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input 
@@ -22,7 +21,6 @@
           </div>
         </div>
   
-        <!-- Email Field -->
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input 
@@ -41,7 +39,6 @@
           </div>
         </div>
   
-        <!-- Password Field -->
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input 
@@ -60,7 +57,6 @@
           </div>
         </div>
   
-        <!-- Confirm Password Field -->
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
           <input 
@@ -80,12 +76,10 @@
           </div>
         </div>
   
-        <!-- Error Message -->
         <div *ngIf="errorMessage" class="alert alert-danger py-2">
           {{ errorMessage }}
         </div>
   
-        <!-- Submit Button -->
         <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid || isLoading || confirmPassword !== registerData.Password">
           <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
           Sign Up
@@ -97,4 +91,4 @@
       </div>
     </div>
   </div>
-  
+   -->

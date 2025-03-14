@@ -22,20 +22,20 @@ export class SignUpComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit(registerForm: NgForm) {
-    if (registerForm.invalid || this.registerData.Password !== this.confirmPassword) return; // Stop if form is invalid or passwords don't match
+  // onSubmit(registerForm: NgForm) {
+  //   if (registerForm.invalid || this.registerData.Password !== this.confirmPassword) return; // Stop if form is invalid or passwords don't match
 
-    this.isLoading = true;
-    this.authService.register(this.registerData).subscribe({
-      next: response => {
-        console.log('Registration successful:', response);
-        this.router.navigate(['/login']); // Redirect to login after signup
-      },
-      error: error => {
-        console.error('Registration failed:', error);
-        this.errorMessage = 'Registration failed. Try again.';
-        this.isLoading = false;
-      }
-    });
-  }
+  //   this.isLoading = true;
+  //   this.authService.register(this.registerData).subscribe({
+  //     next: response => {
+  //       console.log('Registration successful:', response);
+  //       this.router.navigate(['/login']); // Redirect to login after signup
+  //     },
+  //     error: error => {
+  //       console.error('Registration failed:', error);
+  //       this.errorMessage = 'Registration failed. Try again.';
+  //       this.isLoading = false;
+  //     }
+  //   });
+  // }
 }

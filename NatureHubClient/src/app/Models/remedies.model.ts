@@ -1,9 +1,11 @@
 export interface Remedy {
-    Id: string;
-    Name: string;
-    Description: string;
-    Benefits: string[];
-    Preparation: string;
-    Usage: string;
-  }
-  
+  Id: number;
+  Name: string;
+  Description: string;
+  Ingredients: string;
+  Category: string;
+  Benefits: string;
+  PreparationMethod: string;
+  UsageInstructions: string;
+  CreatedDate: string;
+}

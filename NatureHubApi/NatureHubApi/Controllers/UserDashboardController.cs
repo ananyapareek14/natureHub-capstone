@@ -22,7 +22,9 @@ namespace NatureHubApi.Controllers
         [HttpGet("overview")]
         public async Task<IActionResult> GetUserOverview()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userId = User.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
+            Console.WriteLine($"Extracted User ID: {userId}");
             if (userId == null) return Unauthorized();
 
             var user = await _userRepository.GetUserByIdAsync(Guid.Parse(userId));

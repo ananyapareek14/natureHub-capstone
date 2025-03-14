@@ -1,1 +1,41 @@
-<p>remedy-detail works!</p>
+<!-- <div class="row mt-4">
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ remedy.Name }}</h5>
+        <p class="card-text">{{ remedy.Description }}</p>
+        <p><strong>🍃 Ingredients:<br></strong> {{ remedy.Ingredients }}</p>
+        
+        <p><strong>✨ Benefits:<br></strong> 
+          <span [innerHTML]="formatText(remedy.Benefits)"></span>
+        </p>
+
+        <p><strong>📝 Preparation:<br></strong>  
+          <span [innerHTML]="formatText(remedy.PreparationMethod)"></span>
+        </p>
+
+        <p><strong>💡 Usage:<br></strong>  
+          <span [innerHTML]="formatText(remedy.UsageInstructions)"></span>
+        </p>
+
+
+        <p class="text-muted small">📅 Created on: {{ remedy.CreatedDate | date:'MMM d, y' }}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div *ngIf="remedy">
+  <h2>{{ remedy.Name }}</h2>
+  <p><strong>✨ Benefits:</strong></p>
+  <p [innerHTML]="remedy.Benefits.replace(/\n/g, '<br>')"></p>
+
+  <p><strong>📝 Preparation:</strong></p>
+  <p [innerHTML]="remedy.PreparationMethod.replace(/\n/g, '<br>')"></p>
+
+  <p><strong>💡 Usage:</strong></p>
+  <p [innerHTML]="remedy.UsageInstructions.replace(/\n/g, '<br>')"></p>
+
+  <p class="text-muted small">📅 Created on: {{ remedy.CreatedDate | date:'MMM d, y' }}</p>
+</div>

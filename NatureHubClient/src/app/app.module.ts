@@ -16,7 +16,6 @@ import { ProductDetailComponent } from './Shopping/product-detail/product-detail
 import { CartComponent } from './Shopping/cart/cart.component';
 import { CheckoutComponent } from './Shopping/checkout/checkout.component';
 import { OrderHistoryComponent } from './Shopping/order-history/order-history.component';
-import { SignUpComponent } from './User/sign-up/sign-up.component';
 import { UserDashboardComponent } from './User/user-dashboard/user-dashboard.component';
 import { ProfileComponent } from './User/profile/profile.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -27,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './User/login/login.component';
 import { ToastComponent } from './shared/toast/toast.component';
 import { CommonModule } from '@angular/common';
+import { SignUpComponent } from './User/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -56,11 +56,12 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     provideHttpClient(),
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

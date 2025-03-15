@@ -9,7 +9,7 @@ namespace NatureHubApi.Controllers
 {
     [Route("api/dashboard")]
     [ApiController]
-    //[Authorize] // Ensures only authenticated users can access
+    [Authorize] // Ensures only authenticated users can access
     public class UserDashboardController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
@@ -23,7 +23,7 @@ namespace NatureHubApi.Controllers
         public async Task<IActionResult> GetUserOverview()
         {
             //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userId = User.FindFirstValue("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             Console.WriteLine($"Extracted User ID: {userId}");
             if (userId == null) return Unauthorized();
 

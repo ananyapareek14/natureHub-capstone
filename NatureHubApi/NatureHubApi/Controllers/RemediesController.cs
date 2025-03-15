@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NatureHubApi.Data;
 using NatureHubApi.Model.Domain;
@@ -7,6 +8,7 @@ namespace NatureHubApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RemediesController : ControllerBase
     {
         private readonly AppDbContext _context;

@@ -1,1 +1,29 @@
-<p>cart works!</p>
+<div class="container mt-4">
+  <h2 class="mb-4">Shopping Cart</h2>
+
+  <div *ngIf="cartItems.length === 0" class="alert alert-info text-center">
+    Your cart is empty.
+  </div>
+
+  <div *ngIf="cartItems.length > 0">
+    <div class="list-group">
+      <div class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of cartItems">
+        <div>
+          <h5>{{ item.ProductName }}</h5>
+          <p class="text-muted">${{ item.Price | number:'1.2-2' }}</p>
+          <div class="d-flex align-items-center">
+            <span class="mx-2">{{ item.Quantity }}</span>
+          </div>
+        </div>
+        <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.Id)">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-between">
+      <h4>Total: ${{ totalPrice | number:'1.2-2' }}</h4>
+      <button class="btn btn-success" (click)="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+</div>

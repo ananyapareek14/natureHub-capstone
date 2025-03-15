@@ -8,35 +8,35 @@ import { ToastService } from '../../services/toast.service';
   selector: 'app-login',
   standalone: false,
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   loginData: LoginRequest = {
     Email: '',
-    Password: ''
+    Password: '',
   };
   errorMessage: string | null = null;
   isLoading = false;
 
-  constructor(
-    private authService: AuthService, 
-    private router: Router, 
-    private toastService: ToastService // Inject ToastService
-  ) {}
+  currentView: string = 'login'; // Track the current view
 
-  onSubmit() {
-    this.isLoading = true;
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login() {
+    this.isLoading = true; // Start loading indicator
+    this.errorMessage = null; // Clear previous errors
+
     this.authService.login(this.loginData).subscribe({
-      next: response => {
-        this.authService.saveToken(response.Token);
-        this.toastService.show('Success', 'Login successful!', 'success'); // Show success toast
-        this.router.navigate(['/dashboard']); // Redirect to dashboard
+      next: (loginResponse) => {
+        this.isLoading = false; // Stop loading
+        this.router.navigateByUrl('/dashboard');
       },
-      error: () => {
-        this.errorMessage = 'Invalid email or password';
-        this.toastService.show('Error', 'Invalid email or password', 'error'); // Show error toast
-        this.isLoading = false;
-      }
+      error: (err) => {
+        this.isLoading = false; // Stop loading
+        console.error('Login failed:', err);
+        this.errorMessage =
+          'Login failed. Please check your credentials and try again.';
+      },
     });
   }
 }

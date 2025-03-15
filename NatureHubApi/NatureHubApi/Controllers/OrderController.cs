@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NatureHubApi.Model.Domain;
 using NatureHubApi.Model.DTO;
 using NatureHubApi.Repos.Interface;
+using System.Security.Claims;
 
 namespace NatureHubApi.Controllers
 {
@@ -21,15 +22,22 @@ namespace NatureHubApi.Controllers
         }
 
         // ✅ Get all orders for a user
-        [HttpGet("{userId}")]
-        public async Task<IActionResult> GetOrders(Guid userId)
+        [HttpGet]
+        public async Task<IActionResult> GetOrders()
         {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out Guid userId))
+            {
+                return Unauthorized("Invalid or missing User ID in token.");
+            }
+
             var orders = await _orderRepository.GetOrdersByUserIdAsync(userId);
             if (!orders.Any())
                 return NotFound("No orders found.");
 
             return Ok(orders);
         }
+
 
         // ✅ Get order details by ID
         [HttpGet("details/{orderId}")]

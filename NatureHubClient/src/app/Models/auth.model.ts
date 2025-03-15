@@ -18,11 +18,8 @@ export interface RegisterRequest {
   
   export interface LoginResponse {
     Token: string;
-    User: {
-      Id: string;
-      Name: string;
-      Email: string;
-      CreatedAt: string;
-    };
+    Id: string;
+    Name: string;
+    Email: string;
   }
   

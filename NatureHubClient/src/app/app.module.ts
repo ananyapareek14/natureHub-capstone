@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { RemedyListComponent } from './Remedy/remedy-list/remedy-list.component';
 import { RemedyDetailComponent } from './Remedy/remedy-detail/remedy-detail.component';
@@ -57,11 +57,10 @@ import { SignUpComponent } from './User/sign-up/sign-up.component';
     AppRoutingModule,
     FormsModule,
     CommonModule,
-    
+    HttpClientModule   
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    provideHttpClient(),
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

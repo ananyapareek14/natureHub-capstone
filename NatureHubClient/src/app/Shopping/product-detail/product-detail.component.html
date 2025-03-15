@@ -1,1 +1,29 @@
-<p>product-detail works!</p>
+<div class="container mt-4">
+  <div class="card shadow-lg p-3">
+    <div class="row">
+      <!-- Product Image -->
+      <div class="col-md-6">
+        <img [src]="product.ImageUrl" alt="{{ product.Name }}" class="img-fluid rounded">
+      </div>
+
+      <!-- Product Details -->
+      <div class="col-md-6">
+        <h2>{{ product.Name }}</h2>
+        <p class="text-muted">{{ product.Category }}</p>
+        <h4 class="text-success">${{ product.Price | number:'1.2-2' }}</h4>
+        <p>{{ product.Description }}</p>
+
+        <!-- Quantity Selection -->
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity:</label>
+          <input type="number" id="quantity" class="form-control w-50" [(ngModel)]="quantity" min="1">
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button class="btn btn-primary w-100" (click)="addToCart()"> 
+          <i class="bi bi-cart"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

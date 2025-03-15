@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NatureHubApi.Model.Domain;
 using NatureHubApi.Repos.Interface;
 
@@ -6,6 +7,7 @@ namespace NatureHubApi.Controllers
 {
     [ApiController]
     [Route("api/products")]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;

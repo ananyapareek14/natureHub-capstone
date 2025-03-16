@@ -1,1 +1,11 @@
-<p>health-tips-detail works!</p>
+<div class="container mt-4">
+  <div *ngIf="healthTip">
+    <h2>{{ healthTip.Title }}</h2>
+    <p class="text-muted">Category: {{ healthTip.Category }}</p>
+    <p>{{ healthTip.Content }}</p>
+    <a routerLink="/health-tips" class="btn btn-primary">Back to List</a>
+  </div>
+  <div *ngIf="!healthTip" class="alert alert-danger">
+    Health tip not found.
+  </div>
+</div>

@@ -11,9 +11,9 @@
         <img [src]="product.ImageUrl" class="card-img-top" alt="{{ product.Name }}" />
         <div class="card-body">
           <h5 class="card-title">{{ product.Name }}</h5>
-          <p class="card-text">Price: ${{ product.Price }}</p>
+          <p class="card-text">Price: ₹ {{ product.Price }}</p>
           <button class="btn btn-primary" (click)="viewProduct(product.Id)">View Details</button>
-          <!-- <button class="btn btn-success ms-2" (click)="addToCart(product)">Add to Cart</button> -->
+          <button class="btn btn-success ms-2" (click)="addToCart(product)">Add to Cart</button>
         </div>
       </div>
     </div>

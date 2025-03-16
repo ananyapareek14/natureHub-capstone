@@ -37,13 +37,6 @@ namespace NatureHubApi.Controllers
         }
 
 
-        // ✅ Get total cart price for a user
-        //[HttpGet("{userId}/total")]
-        //public async Task<IActionResult> GetCartTotal(Guid userId)
-        //{
-        //    var totalPrice = await _cartRepository.CalculateCartTotalAsync(userId);
-        //    return Ok(new { TotalPrice = totalPrice });
-        //}
         [HttpGet("total")]
         public async Task<IActionResult> GetCartTotal()
         {
@@ -60,13 +53,35 @@ namespace NatureHubApi.Controllers
             return Ok(new { TotalPrice = totalPrice });
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateCartItem([FromBody] CartItemDto cartItemDto)
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out Guid userId))
+            {
+                return Unauthorized("Invalid or missing User ID in token.");
+            }
+
+            var existingCartItem = await _cartRepository.GetCartItemAsync(userId, cartItemDto.ProductId);
+            if (existingCartItem == null)
+                return NotFound("Product not found in cart.");
+
+            existingCartItem.Quantity = cartItemDto.Quantity;
+            var success = await _cartRepository.UpdateCartItemAsync(existingCartItem);
+
+            if (!success)
+                return StatusCode(500, "Failed to update cart item.");
+
+            return Ok("Cart item updated successfully.");
+        }
+
+
 
         // ✅ Add a product to the cart
         [HttpPost]
         public async Task<IActionResult> AddToCart([FromBody] CartItemDto cartItemDto)
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
             if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out Guid userId))
             {
                 return Unauthorized("Invalid or missing User ID in token.");
@@ -74,25 +89,29 @@ namespace NatureHubApi.Controllers
 
             cartItemDto.UserId = userId;
 
+            // Check if the item already exists in the cart
             var existingCartItem = await _cartRepository.GetCartItemAsync(userId, cartItemDto.ProductId);
             if (existingCartItem != null)
             {
                 existingCartItem.Quantity += cartItemDto.Quantity;
+                await _cartRepository.UpdateCartItemAsync(existingCartItem);
             }
             else
             {
-                existingCartItem = new CartItem
+                var newCartItem = new CartItem
                 {
                     UserId = userId,
                     ProductId = cartItemDto.ProductId,
-                    Quantity = cartItemDto.Quantity
+                    Quantity = cartItemDto.Quantity,
+                    AddedAt = DateTime.UtcNow
                 };
 
-                await _cartRepository.AddToCartAsync(existingCartItem);
+                await _cartRepository.AddToCartAsync(newCartItem);
             }
 
-            return Ok(existingCartItem);
+            return Ok("Product added to cart successfully.");
         }
+
 
         // ✅ Remove a product from the cart
         [HttpDelete("{cartItemId}")]
@@ -105,5 +124,4 @@ namespace NatureHubApi.Controllers
             return Ok("Item removed from cart.");
         }
     }
-
 }

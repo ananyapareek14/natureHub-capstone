@@ -10,6 +10,9 @@ import { ProductListComponent } from './Shopping/product-list/product-list.compo
 import { ProductDetailComponent } from './Shopping/product-detail/product-detail.component';
 import { CartComponent } from './Shopping/cart/cart.component';
 import { CheckoutComponent } from './Shopping/checkout/checkout.component';
+import { ProfileComponent } from './User/profile/profile.component';
+import { HealthTipListComponent } from './Health-Tips/health-tips-list/health-tips-list.component';
+import { HealthTipsDetailComponent } from './Health-Tips/health-tips-detail/health-tips-detail.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,10 +20,13 @@ const routes: Routes = [
   { path: 'dashboard', component: UserDashboardComponent },
   { path: 'remedies', component: RemedyListComponent },
   { path: 'remedies/:id', component: RemedyDetailComponent },
+  { path: 'health-tips', component: HealthTipListComponent },
+  { path: 'health-tips/:id', component: HealthTipsDetailComponent },
   { path: 'shop', component: ProductListComponent },
   { path: 'shop/:id', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

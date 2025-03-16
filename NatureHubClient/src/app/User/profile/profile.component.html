@@ -1,1 +1,111 @@
-<p>profile works!</p>
+<!-- <div class="container mt-5">
+  <div *ngIf="isLoading" class="text-center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="user">
+    <h2 class="text-center">Welcome, {{ user.Name }}!</h2>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <h4>User Profile</h4>
+          <p><strong>Email:</strong> {{ user.Email }}</p>
+          <p><strong>Member Since:</strong> {{ user.CreatedAt | date }}</p>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card p-3 shadow">
+          <h4>Order History</h4>
+
+          <div class="mb-3">
+            <label class="form-label"><strong>Filter by Status:</strong></label>
+            <div *ngFor="let status of orderStatusOptions" class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [value]="status"
+                (change)="filterOrders()"
+                [(ngModel)]="selectedStatuses"
+              />
+              <label class="form-check-label">{{ status }}</label>
+            </div>
+          </div>
+
+          <ul class="list-group">
+            <li *ngFor="let order of filteredOrders" class="list-group-item">
+              <strong>Order ID:</strong> {{ order.Id }} |
+              <strong>Status:</strong> {{ order.Status }} |
+              <strong>Total:</strong> ₹{{ order.TotalAmount }} |
+              <strong>Order Date:</strong> {{ order.OrderDate | date:'medium' }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container mt-5">
+  <div *ngIf="isLoading" class="text-center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="user">
+    <h2 class="text-center">Welcome, {{ user.Name }}!</h2>
+
+    <!-- User Information -->
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <h4>User Profile</h4>
+          <p><strong>Email:</strong> {{ user.Email }}</p>
+          <p><strong>Member Since:</strong> {{ user.CreatedAt | date }}</p>
+          <p><strong>Cart Items:</strong> {{ cartItemCount }}</p>
+        </div>
+      </div>
+
+      <!-- Order History with Filters -->
+      <div class="col-md-8">
+        <div class="card p-3 shadow">
+          <h4>Order History</h4>
+
+          <!-- Multi-Select Filter -->
+<div class="mb-3">
+  <label class="form-label"><strong>Filter by Status:</strong></label>
+  <div *ngFor="let status of orderStatusOptions" class="form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      [value]="status.value"
+      (change)="toggleStatus(status.value)"
+      [checked]="selectedStatuses.includes(status.value)"
+    />
+    <label class="form-check-label">{{ status.key }}</label>
+  </div>
+</div>
+
+
+          <!-- Orders List -->
+          <ul class="list-group">
+            <li *ngFor="let order of filteredOrders" class="list-group-item">
+              <strong>Order ID:</strong> {{ order.Id }} |
+              <strong>Status:</strong> {{ order.Status }} |
+              <strong>Total:</strong> ₹{{ order.TotalAmount }} |
+              <strong>Order Date:</strong> {{ order.OrderDate | date:'medium' }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

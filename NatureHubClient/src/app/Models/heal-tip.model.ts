@@ -1,7 +1,8 @@
 export interface HealthTip {
-    Id: string;
+    Id: number;
     Title: string;
-    Description: string;
+    Content: string;
     Category: string;
+    CreatedDate: string;
   }
   

@@ -35,6 +35,27 @@ namespace NatureHubApi.Repos
             return cartItem;
         }
 
+        //public async Task<bool> RemoveFromCartAsync(int cartItemId)
+        //{
+        //    var cartItem = await _context.CartItems.FindAsync(cartItemId);
+        //    if (cartItem == null)
+        //        return false;
+
+        //    _context.CartItems.Remove(cartItem);
+        //    await _context.SaveChangesAsync();
+        //    return true;
+        //}
+        //public async Task<bool> RemoveFromCartAsync(int cartItemId)
+        //{
+        //    var cartItem = await _context.CartItems.FindAsync(cartItemId);
+        //    if (cartItem == null)
+        //        return false;
+
+        //    _context.CartItems.Remove(cartItem);
+        //    await _context.SaveChangesAsync();
+        //    return true;
+        //}
+
         public async Task<bool> RemoveFromCartAsync(int cartItemId)
         {
             var cartItem = await _context.CartItems.FindAsync(cartItemId);
@@ -45,6 +66,8 @@ namespace NatureHubApi.Repos
             await _context.SaveChangesAsync();
             return true;
         }
+
+
 
         public async Task<bool> UpdateCartItemAsync(CartItem cartItem)
         {

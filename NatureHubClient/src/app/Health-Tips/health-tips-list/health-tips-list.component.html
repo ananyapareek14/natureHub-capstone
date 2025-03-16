@@ -1,1 +1,18 @@
-<p>health-tips-list works!</p>
+<div class="container mt-4">
+  <h2 class="mb-4">Health Tips</h2>
+
+  <div *ngIf="healthTips.length === 0" class="alert alert-info text-center">
+    No health tips found for this category.
+  </div>
+
+  <div class="list-group">
+    <button
+      *ngFor="let tip of healthTips"
+      class="list-group-item list-group-item-action"
+      (click)="viewDetails(tip.Id)"
+    >
+      <h5>{{ tip.Title }}</h5>
+      <p class="text-muted">Category: {{ tip.Category }}</p>
+    </button>
+  </div>
+</div>

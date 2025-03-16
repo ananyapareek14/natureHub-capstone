@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { RemedyListComponent } from './Remedy/remedy-list/remedy-list.component';
 import { RemedyDetailComponent } from './Remedy/remedy-detail/remedy-detail.component';
 import { RemedyCategoryComponent } from './Remedy/remedy-category/remedy-category.component';
-import { HealthTipsListComponent } from './Health-Tips/health-tips-list/health-tips-list.component';
+import { HealthTipListComponent } from './Health-Tips/health-tips-list/health-tips-list.component';
 import { HealthTipsDetailComponent } from './Health-Tips/health-tips-detail/health-tips-detail.component';
 import { HealthTipsCategoryComponent } from './Health-Tips/health-tips-category/health-tips-category.component';
 import { ProductListComponent } from './Shopping/product-list/product-list.component';
@@ -34,7 +34,7 @@ import { SignUpComponent } from './User/sign-up/sign-up.component';
     RemedyListComponent,
     RemedyDetailComponent,
     RemedyCategoryComponent,
-    HealthTipsListComponent,
+    HealthTipListComponent,
     HealthTipsDetailComponent,
     HealthTipsCategoryComponent,
     ProductListComponent,

@@ -16,10 +16,11 @@
           <li class="nav-item"><a class="nav-link" routerLink="/remedies">Remedies</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/health-tips">Health Tips</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/shop">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/cart"><i class="bi bi-cart-fill"></i></a></li>
   
           <!-- Show User Dashboard if Logged In -->
           <li *ngIf="isLoggedIn()" class="nav-item">
-            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+            <a class="nav-link" routerLink="/dashboard"><i class="bi bi-person-circle"></i></a>
           </li>
   
           <!-- Login / Logout -->

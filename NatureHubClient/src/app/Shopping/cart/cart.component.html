@@ -8,21 +8,24 @@
   <div *ngIf="cartItems.length > 0">
     <div class="list-group">
       <div class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of cartItems">
-        <div>
-          <h5>{{ item.ProductName }}</h5>
-          <p class="text-muted">${{ item.Price | number:'1.2-2' }}</p>
-          <div class="d-flex align-items-center">
-            <span class="mx-2">{{ item.Quantity }}</span>
-          </div>
-        </div>
-        <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.Id)">
-          <i class="bi bi-trash"></i>
-        </button>
-      </div>
+  <div>
+    <h5>{{ item.Product.Name }}</h5>
+    <p class="text-muted">₹ {{ item.Product.Price | number:'1.2-2' }}</p>
+    <div class="d-flex align-items-center">
+      <button class="btn btn-sm btn-secondary" (click)="updateQuantity(item, -1)">-</button>
+      <span class="mx-2">{{ item.Quantity }}</span>
+      <button class="btn btn-sm btn-secondary" (click)="updateQuantity(item, 1)">+</button>
+    </div>
+  </div>
+  <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.Id)">
+    <i class="bi bi-trash"></i>
+  </button>
+</div>
+
     </div>
 
     <div class="mt-4 d-flex justify-content-between">
-      <h4>Total: ${{ totalPrice | number:'1.2-2' }}</h4>
+      <h4>Total: ₹ {{ totalPrice | number:'1.2-2' }}</h4>
       <button class="btn btn-success" (click)="checkout()">Proceed to Checkout</button>
     </div>
   </div>

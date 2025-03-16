@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
-import { LoginRequest, LoginResponse } from '../Models/auth.model';
+import { LoginRequest, LoginResponse, RegisterRequest } from '../Models/auth.model';
 import { environment } from '../environment/environment';
 
 @Injectable({
@@ -43,7 +43,8 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('auth');
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('UserId');
   }
 
   isAuthenticated(): boolean {
@@ -64,5 +65,9 @@ export class AuthService {
   private handleError(error: HttpErrorResponse) {
     console.error('❌ API Error:', error);
     return throwError(() => new Error(error.message || 'Something went wrong'));
+  }
+
+  register(userData: RegisterRequest): Observable<any> {
+    return this.http.post(`${this.apiUrl}/auth/register`, userData);
   }
 }

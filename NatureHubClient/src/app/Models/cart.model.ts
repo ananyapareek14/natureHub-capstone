@@ -1,3 +1,5 @@
+import { Product } from "./product.model";
+
 export interface CartPost {
     UserId: string;
     ProductId: string;
@@ -7,9 +9,8 @@ export interface CartPost {
   export interface CartItem {
     Id: string;
     ProductId: string;
-    ProductName: string;
+    Product: Product;
     Quantity: number;
-    Price: number;
   }
   
   export interface Cart {

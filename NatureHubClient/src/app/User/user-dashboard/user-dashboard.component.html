@@ -23,9 +23,10 @@
           <div class="card p-3 shadow">
             <h4>Dashboard Overview</h4>
             <ul class="list-group">
-              <li class="list-group-item">Total Orders: {{ overview.TotalOrders }}</li>
-              <li class="list-group-item">Total Spent: ${{ overview.TotalSpent }}</li>
-              <li class="list-group-item">Cart Items: {{ overview.CartItemCount }}</li>
+              <li class="list-group-item">Total Orders: {{ overview.OrderCount }}</li>
+<li class="list-group-item">Total Spent: ₹ {{ overview.TotalSpent || 0 }}</li>
+<li class="list-group-item">Cart Items: {{ overview.CartItemCount }}</li>
+
             </ul>
           </div>
         </div>

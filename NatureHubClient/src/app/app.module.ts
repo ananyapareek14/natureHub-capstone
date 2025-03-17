@@ -27,6 +27,7 @@ import { LoginComponent } from './User/login/login.component';
 import { ToastComponent } from './shared/toast/toast.component';
 import { CommonModule } from '@angular/common';
 import { SignUpComponent } from './User/sign-up/sign-up.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SignUpComponent } from './User/sign-up/sign-up.component';
     NotFoundComponent,
     LoadingSpinnerComponent,
     ToastComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

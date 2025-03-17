@@ -8,7 +8,6 @@ namespace NatureHubApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class HealthTipsController : ControllerBase
     {
         private readonly AppDbContext _context;

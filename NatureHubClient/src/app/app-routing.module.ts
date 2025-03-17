@@ -13,23 +13,45 @@ import { CheckoutComponent } from './Shopping/checkout/checkout.component';
 import { ProfileComponent } from './User/profile/profile.component';
 import { HealthTipListComponent } from './Health-Tips/health-tips-list/health-tips-list.component';
 import { HealthTipsDetailComponent } from './Health-Tips/health-tips-detail/health-tips-detail.component';
+import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
+
+// const routes: Routes = [
+//   { path: 'login', component: LoginComponent },
+//   { path: 'register', component: SignUpComponent },
+//   { path: 'dashboard', component: UserDashboardComponent },
+//   { path: 'remedies', component: RemedyListComponent },
+//   { path: 'remedies/:id', component: RemedyDetailComponent },
+//   { path: 'health-tips', component: HealthTipListComponent },
+//   { path: 'health-tips/:id', component: HealthTipsDetailComponent },
+//   { path: 'shop', component: ProductListComponent },
+//   { path: 'shop/:id', component: ProductDetailComponent },
+//   { path: 'cart', component: CartComponent },
+//   { path: 'checkout', component: CheckoutComponent },
+//   { path: 'profile', component: ProfileComponent },
+//   { path: '', redirectTo: '/login', pathMatch: 'full' },
+//   { path: '**', component: NotFoundComponent },
+// ];
+
 
 const routes: Routes = [
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignUpComponent },
-  { path: 'dashboard', component: UserDashboardComponent },
+  { path: 'dashboard', component: UserDashboardComponent, canActivate: [AuthGuard] },
   { path: 'remedies', component: RemedyListComponent },
   { path: 'remedies/:id', component: RemedyDetailComponent },
   { path: 'health-tips', component: HealthTipListComponent },
   { path: 'health-tips/:id', component: HealthTipsDetailComponent },
   { path: 'shop', component: ProductListComponent },
   { path: 'shop/:id', component: ProductDetailComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

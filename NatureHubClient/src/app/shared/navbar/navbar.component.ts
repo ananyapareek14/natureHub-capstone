@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   userName: string = '';
+  isSticky: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
     // if (this.isLoggedIn()) {
@@ -24,5 +25,11 @@ export class NavbarComponent {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    this.isSticky = scrollY > window.innerHeight * 0.4; // 40% of page height
   }
 }

@@ -7,7 +7,6 @@ namespace NatureHubApi.Controllers
 {
     [ApiController]
     [Route("api/products")]
-    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;

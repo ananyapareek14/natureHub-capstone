@@ -98,6 +98,10 @@
     transform: translateY(-5px);
 }
 
+.feature-card-1{
+    padding-bottom: 50px;
+}
+
 .feature-icon {
     font-size: 3rem;
     margin-bottom: 15px;

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { RegisterRequest } from '../../Models/auth.model';
@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
 })
-export class SignUpComponent implements AfterViewInit {
+export class SignUpComponent implements OnInit,AfterViewInit {
   @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
 
   registerData: RegisterRequest = {
@@ -21,8 +21,19 @@ export class SignUpComponent implements AfterViewInit {
   confirmPassword: string = ''; // New field
   errorMessage: string | null = null;
   isLoading = false;
+  showNavbar = false;
 
   constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    // Hide navbar on this page
+    document.body.classList.add('hide-navbar');
+  }
+
+  ngOnDestroy(): void {
+    // Show navbar again when leaving this page
+    document.body.classList.remove('hide-navbar');
+  }
 
   ngAfterViewInit() {
     // Ensure the video starts playing
@@ -52,5 +63,8 @@ export class SignUpComponent implements AfterViewInit {
         this.isLoading = false;
       },
     });
+  }
+  navigateHome() {
+    this.router.navigate(['/']);
   }
 }

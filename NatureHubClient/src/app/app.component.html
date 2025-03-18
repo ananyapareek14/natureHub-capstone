@@ -1,7 +1,10 @@
-<app-navbar></app-navbar>
+<div *ngIf="!shouldHideNavFooter()">
+    <app-navbar></app-navbar>
+  </div>
 <app-toast></app-toast>
-<div [ngClass]="{ 'page-container': !isHomePage(), 'home-container': isHomePage() }">
 <router-outlet></router-outlet>
-</div>
+<div *ngIf="!shouldHideNavFooter()">
+    <app-footer></app-footer>
+  </div>
 
   

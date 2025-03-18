@@ -1,4 +1,9 @@
    <div class="login-container">
+    <div class="back-to-home">
+      <a routerLink="/" class="btn">
+        <i class="bi bi-caret-left-fill"></i>  Back to Home
+      </a>
+    </div>
     <!-- Background Video -->
     <video #bgVideo autoplay muted loop class="bg-video">
       <source src="/bg-video.mp4" type="video/mp4">
@@ -8,12 +13,13 @@
     <!-- Login Form Container -->
     <div class="container d-flex justify-content-center align-items-center">
       <div class="card shadow-lg" style="width: 400px;">
-        <h3 class="text-center heading mb-4">Login</h3>
+        <h2 class="text-center heading"><i class="bi bi-tree-fill"></i> Nature Hub</h2>
+        <p class="text-center mb-4">Sign in to continue</p>
     
         <form (submit)="login()">
           <!-- Email Field -->
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label">Email Address</label>
             <input 
               type="email" 
               id="email" 
@@ -45,7 +51,7 @@
           <!-- Submit Button -->
           <button type="submit" class="btn w-100" [disabled]="isLoading">
             <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
-            Let me in!!
+            Sign in
           </button>
         </form>
     

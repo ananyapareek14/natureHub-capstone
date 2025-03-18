@@ -1,4 +1,4 @@
-<!-- <div class="row mt-4">
+<div class="row mt-4">
   <div class="col-md-4 mb-4">
     <div class="card h-100 shadow-sm">
       <div class="card-body">
@@ -18,15 +18,14 @@
           <span [innerHTML]="formatText(remedy.UsageInstructions)"></span>
         </p>
 
-
         <p class="text-muted small">📅 Created on: {{ remedy.CreatedDate | date:'MMM d, y' }}</p>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
-<!-- 
-<div *ngIf="remedy">
+
+<!-- <div *ngIf="remedy">
   <h2>{{ remedy.Name }}</h2>
   <p><strong>✨ Benefits:</strong></p>
   <p [innerHTML]="remedy.Benefits.replace(/\n/g, '<br>')"></p>

@@ -1,16 +1,4 @@
-/* Background Video */
-.bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Signup Container */
+/*
 .signup-container {
   position: relative;
   height: 100vh;
@@ -20,9 +8,8 @@
   overflow: hidden;
 }
 
-/* Signup Card */
 .card {
-  background: rgba(255, 255, 255, 0.1); /* Glass effect */
+  background: rgba(255, 255, 255, 0.1); 
   margin-top: 70px;
   backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -31,7 +18,6 @@
   color: white;
 }
 
-/* Button Styling */
 .btn {
   background-color: #2a9d8f;
   color: black;
@@ -43,7 +29,70 @@
   color: black;
 }
 
-/* Text Link */
 a {
   color: white;
+} */
+
+
+/* Hide Navbar on Signup Page */
+.hide-navbar nav {
+  display: none;
 }
+
+/* Full Page Layout */
+.signup-page {
+  display: flex;
+  height: 100vh;
+  background-color: white;
+}
+
+/* Left Side: Signup Form */
+.signup-form {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+/* Signup Form Container */
+.form-container {
+  width: 80%;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+.btn {
+  background-color: #2a9d8f;
+  color: black;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: #ecb859;
+  color: black;
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60vw;
+  height: 100vh;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.back-to-home {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+/* .back-to-home {
+  font-size: 14px;
+  padding: 6px 12px;
+} */
+

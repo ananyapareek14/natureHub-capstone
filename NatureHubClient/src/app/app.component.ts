@@ -12,10 +12,10 @@ export class AppComponent {
 
   constructor(
     private router: Router
-  ) {
-  }
+  ) {}
 
-  isHomePage(): boolean {
-    return this.router.url === '/';
-}
+  shouldHideNavFooter(): boolean {
+    const hiddenRoutes = ['/register', '/login'];
+    return hiddenRoutes.includes(this.router.url);
+  }  
 }

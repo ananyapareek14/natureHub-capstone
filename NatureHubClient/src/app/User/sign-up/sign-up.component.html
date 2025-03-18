@@ -1,114 +1,18 @@
-<!-- <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4 shadow-lg" style="width: 350px;">
-      <h3 class="text-center mb-4">Sign Up</h3>
-  
-      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input 
-            type="text" 
-            id="name" 
-            class="form-control" 
-            [(ngModel)]="registerData.Name"
-            name="name"
-            required
-            minlength="3"
-            #nameInput="ngModel"
-          />
-          <div class="text-danger" *ngIf="nameInput.invalid && nameInput.touched">
-            <small *ngIf="nameInput.errors?.['required']">Name is required.</small>
-            <small *ngIf="nameInput.errors?.['minlength']">Name must be at least 3 characters long.</small>
-          </div>
-        </div>
-  
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input 
-            type="email" 
-            id="email" 
-            class="form-control" 
-            [(ngModel)]="registerData.Email"
-            name="email"
-            required
-            email
-            #emailInput="ngModel"
-          />
-          <div class="text-danger" *ngIf="emailInput.invalid && emailInput.touched">
-            <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
-            <small *ngIf="emailInput.errors?.['email']">Enter a valid email address.</small>
-          </div>
-        </div>
-  
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input 
-            type="password" 
-            id="password" 
-            class="form-control" 
-            [(ngModel)]="registerData.Password"
-            name="password"
-            required
-            minlength="6"
-            #passwordInput="ngModel"
-          />
-          <div class="text-danger" *ngIf="passwordInput.invalid && passwordInput.touched">
-            <small *ngIf="passwordInput.errors?.['required']">Password is required.</small>
-            <small *ngIf="passwordInput.errors?.['minlength']">Password must be at least 6 characters long.</small>
-          </div>
-        </div>
-  
-        <div class="mb-3">
-          <label for="confirmPassword" class="form-label">Confirm Password</label>
-          <input 
-            type="password" 
-            id="confirmPassword" 
-            class="form-control" 
-            [(ngModel)]="confirmPassword"
-            name="confirmPassword"
-            required
-            #confirmPasswordInput="ngModel"
-          />
-          <div class="text-danger" *ngIf="confirmPasswordInput.invalid && confirmPasswordInput.touched">
-            <small *ngIf="confirmPasswordInput.errors?.['required']">Confirm Password is required.</small>
-          </div>
-          <div class="text-danger" *ngIf="confirmPassword && confirmPassword !== registerData.Password">
-            <small>Passwords do not match.</small>
-          </div>
-        </div>
-  
-        <div *ngIf="errorMessage" class="alert alert-danger py-2">
-          {{ errorMessage }}
-        </div>
-  
-        <button type="submit" class="btn btn-primary w-100" [disabled]="registerForm.invalid || isLoading || confirmPassword !== registerData.Password">
-          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
-          Sign Up
-        </button>
-      </form>
-  
-      <div class="text-center mt-3">
-        <a routerLink="/login">Already have an account? Login</a>
-      </div>
-    </div>
+<div class="signup-page">
+  <div class="back-to-home">
+    <a routerLink="/" class="btn">
+      <i class="bi bi-caret-left-fill"></i>  Back to Home
+    </a>
   </div>
-   -->
-
-<div class="signup-container">
-  <!-- Background Video -->
-  <video autoplay muted loop class="bg-video">
-    <source src="/bg-signup-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Signup Form Container -->
-  <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4 shadow-lg" style="width: 350px;">
-      <h3 class="text-center mb-4">Sign Up</h3>
+  <!-- Left: Signup Form -->
+  <div class="signup-form">
+    <div class="form-container">
+      <h3 class="text-center mb-4"><i class="bi bi-tree-fill"></i> Nature Hub</h3>
 
       <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="text" id="name" class="form-control" [(ngModel)]="registerData.Name" name="name" required minlength="3" #nameInput="ngModel"/>
+          <input type="text" id="name" class="form-control" placeholder="Enter your full name" [(ngModel)]="registerData.Name" name="name" required minlength="3" #nameInput="ngModel"/>
           <div class="text-danger" *ngIf="nameInput.invalid && nameInput.touched">
             <small *ngIf="nameInput.errors?.['required']">Name is required.</small>
             <small *ngIf="nameInput.errors?.['minlength']">Name must be at least 3 characters long.</small>
@@ -117,7 +21,7 @@
 
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" class="form-control" [(ngModel)]="registerData.Email" name="email" required email #emailInput="ngModel"/>
+          <input type="email" id="email" class="form-control"  placeholder="user@example.com" [(ngModel)]="registerData.Email" name="email" required email #emailInput="ngModel"/>
           <div class="text-danger" *ngIf="emailInput.invalid && emailInput.touched">
             <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
             <small *ngIf="emailInput.errors?.['email']">Enter a valid email address.</small>
@@ -126,16 +30,16 @@
 
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" id="password" class="form-control" [(ngModel)]="registerData.Password" name="password" required minlength="6" #passwordInput="ngModel"/>
+          <input type="password" id="password" class="form-control" placeholder="6+ characters" [(ngModel)]="registerData.Password" name="password" required minlength="6" #passwordInput="ngModel"/>
           <div class="text-danger" *ngIf="passwordInput.invalid && passwordInput.touched">
             <small *ngIf="passwordInput.errors?.['required']">Password is required.</small>
-            <small *ngIf="passwordInput.errors?.['minlength']">Password must be at least 6 characters long.</small>
+            <small *ngIf="passwordInput.errors?.['minlength']">Please try a longer password</small>
           </div>
         </div>
 
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
-          <input type="password" id="confirmPassword" class="form-control" [(ngModel)]="confirmPassword" name="confirmPassword" required #confirmPasswordInput="ngModel"/>
+          <input type="password" id="confirmPassword" class="form-control" placeholder="Re-enter password" [(ngModel)]="confirmPassword" name="confirmPassword" required #confirmPasswordInput="ngModel"/>
           <div class="text-danger" *ngIf="confirmPasswordInput.invalid && confirmPasswordInput.touched">
             <small *ngIf="confirmPasswordInput.errors?.['required']">Confirm Password is required.</small>
           </div>
@@ -159,4 +63,13 @@
       </div>
     </div>
   </div>
+
+  <!-- Right: Image -->
+  <div class="signup-image">
+    <video #bgVideo autoplay muted loop class="bg-video">
+      <source src="/bg-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 </div>
+

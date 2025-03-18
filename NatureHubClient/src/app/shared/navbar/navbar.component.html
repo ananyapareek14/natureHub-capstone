@@ -1,42 +1,43 @@
-  <nav class="navbar navbar-expand-lg fixed-top" [class.sticky]="isSticky">
+   <nav class="navbar navbar-expand-lg fixed-top" [class.sticky]="isSticky">
     <div class="container">
-      <!-- Logo & Site Name -->
+      <!-- Left Logo -->
       <a class="navbar-brand" routerLink="/">
-        <span class="logo-text"><i class="bi bi-tree-fill"></i>  Nature Hub</span>
+        <span class="logo-text"><i class="bi bi-tree-fill"></i> Nature Hub</span>
       </a>
   
-      <!-- Mobile Toggle -->
+      <!-- Navbar Toggler for Mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
   
-      <!-- Navbar Links -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <!-- Centered Navigation Items -->
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" routerLink="/home">Home</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/remedies">Remedies</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/health-tips">Health Tips</a></li>
           <li class="nav-item"><a class="nav-link" routerLink="/shop">Shop</a></li>
-          <li class="nav-item" *ngIf="isLoggedIn()"><a class="nav-link cart-icon" routerLink="/cart"><i class="bi bi-cart-fill"></i></a></li>
-  
-          <!-- If Logged In -->
-          <li *ngIf="isLoggedIn()" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle"></i> {{ userName }}
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
-              <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
-            </ul>
-          </li>
-  
-          <!-- If Not Logged In -->
-          <li class="nav-item" *ngIf="!isLoggedIn()">
-            <a class="btn btn-login" routerLink="/login">Login</a>
-          </li>
-          <li class="nav-item" *ngIf="!isLoggedIn()">
-            <a class="btn btn-register" routerLink="/register">Sign Up</a>
-          </li>
         </ul>
+      </div>
+  
+      <!-- Right-Side Items (Cart, User Menu, Login) -->
+      <div class="d-flex align-items-center">
+        <a class="nav-link cart-icon me-3" *ngIf="isLoggedIn()" routerLink="/cart">
+          <i class="bi bi-cart-fill"></i>
+        </a>
+  
+        <div *ngIf="isLoggedIn()" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i> {{ userName }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ul>
+        </div>
+  
+        <a class="btn btn-login me-2" *ngIf="!isLoggedIn()" routerLink="/login">Login</a>
+        <a class="btn btn-register" *ngIf="!isLoggedIn()" routerLink="/register">Sign Up</a>
       </div>
     </div>
   </nav>

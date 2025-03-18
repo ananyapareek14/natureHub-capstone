@@ -1,9 +1,8 @@
-<div class="container d-flex justify-content-center align-items-center mt-5">
+<!-- <div class="container d-flex justify-content-center align-items-center mt-5">
     <div class="card p-4 shadow-lg" style="width: 350px;">
       <h3 class="text-center mb-4">Login</h3>
   
       <form (submit)="login()">
-        <!-- Email Field -->
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input 
@@ -16,7 +15,6 @@
           />
         </div>
   
-        <!-- Password Field -->
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input 
@@ -29,12 +27,10 @@
           />
         </div>
   
-        <!-- Error Message -->
         <div *ngIf="errorMessage" class="alert alert-danger py-2">
           {{ errorMessage }}
         </div>
   
-        <!-- Submit Button -->
         <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
           <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
           Login
@@ -43,6 +39,65 @@
   
       <div class="text-center mt-3">
         <a href="/register">Don't have an account? Sign up</a>
+      </div>
+    </div>
+  </div>
+   -->
+
+   <div class="login-container">
+    <!-- Background Video -->
+    <video autoplay muted loop class="bg-video">
+      <source src="assets/videos/background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  
+    <!-- Login Form Container -->
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="card p-4 shadow-lg" style="width: 350px;">
+        <h3 class="text-center mb-4">Login</h3>
+    
+        <form (submit)="login()">
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              class="form-control" 
+              [(ngModel)]="loginData.Email"
+              name="email"
+              required
+            />
+          </div>
+    
+          <!-- Password Field -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              class="form-control" 
+              [(ngModel)]="loginData.Password"
+              name="password"
+              required
+            />
+          </div>
+    
+          <!-- Error Message -->
+          <div *ngIf="errorMessage" class="alert alert-danger py-2">
+            {{ errorMessage }}
+          </div>
+    
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+            Login
+          </button>
+        </form>
+    
+        <div class="text-center mt-3">
+          <a routerLink="/register">Don't have an account? Sign up</a>
+        </div>
       </div>
     </div>
   </div>

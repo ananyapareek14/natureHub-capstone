@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastService } from '../../services/toast.service';
 import { ProductServiceService } from '../../services/product-service.service';
 import { CartServiceService } from '../../services/cart-service.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-product-list',
@@ -19,6 +20,7 @@ export class ProductListComponent {
     private productService: ProductServiceService,
     private cartService: CartServiceService,
     private toastService: ToastService,
+    private authService: AuthService,  
     private router: Router
   ) {}
 
@@ -44,7 +46,20 @@ export class ProductListComponent {
     this.router.navigate(['/shop', productId]);
   }
 
+  // addToCart(product: Product): void {
+  //   this.cartService.addToCart(product.Id, 1).subscribe({
+  //     next: () => this.toastService.showSuccess('Product added to cart'),
+  //     error: () => this.toastService.showError('Failed to add product to cart'),
+  //   });
+  // }
+
   addToCart(product: Product): void {
+    if (!this.authService.isAuthenticated()) {
+      this.toastService.showError('You need to log in to add items to the cart!');
+      this.router.navigate(['/login']);  // Redirect to login page
+      return;
+    }
+  
     this.cartService.addToCart(product.Id, 1).subscribe({
       next: () => this.toastService.showSuccess('Product added to cart'),
       error: () => this.toastService.showError('Failed to add product to cart'),

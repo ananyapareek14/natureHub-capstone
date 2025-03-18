@@ -1,6 +1,6 @@
 .hero-section {
     position: relative;
-    background: url('/background.jpg') no-repeat center center/cover;
+    /* background: url('/background.jpg') no-repeat center center/cover; */
     margin-top: 0 !important;
     height: 100vh;
     display: flex;
@@ -16,7 +16,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Soft dark overlay */
+    background: rgba(0, 0, 0, 0.4); 
 }
 
 .hero-content {
@@ -32,7 +32,7 @@
 .hero-content h1 {
     font-size: 3rem;
     font-weight: bold;
-    color: white; /* Teal */
+    color: white; 
 }
 
 .hero-content p {
@@ -40,7 +40,7 @@
     margin-bottom: 1.5rem;
 }
 
-/* Buttons */
+
 .hero-buttons {
     margin-top: 20px;
 }
@@ -57,13 +57,12 @@
 }
 
 .btn-explore:hover {
-    background: #ecb859; /* Warm beige */
+    background: #ecb859;
     color: black;
     transform: scale(1.05);
 }
 
 .btn-outline-explore {
-    /* border: 2px solid #2a9d8f; */
     background: white;
     color: #2a9d8f;
     padding: 0.8rem 2rem;
@@ -79,13 +78,11 @@
     transform: scale(1.05);
 }
 
-/* Section Title */
 .section-title {
     font-size: 2.5rem;
-    color: #264653; /* Dark blue-green */
+    color: #264653; 
 }
 
-/* Feature Cards */
 .feature-card {
     text-align: center;
     padding: 30px;
@@ -106,7 +103,40 @@
 .feature-icon {
     font-size: 3rem;
     margin-bottom: 15px;
-    color: #2a9d8f; /* Matching teal */
+    color: #2a9d8f;
 }
 
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2; 
+}
 
+/* Play Button */
+.play-btn {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: transparent; /* No background */
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 2rem; /* Adjust size */
+    color: white; /* Icon color */
+    z-index: 10; /* Ensure it's above the video */
+    transition: all 0.3s ease-in-out;
+}
+
+.play-btn i {
+    font-size: 2rem; /* Adjust icon size */
+}
+
+/* Hover Effect */
+.play-btn:hover {
+    color: #2a9d8f;
+    transform: scale(1.05);
+}

@@ -1,0 +1,44 @@
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.login-container {
+    position: relative;
+    height: 78vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px);
+    margin-top: 200px;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.btn{
+    background-color: #2a9d8f;
+    color: black;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #ecb859;
+    color: black;
+}
+
+.signup-text{
+    color: white;
+}

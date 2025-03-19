@@ -63,7 +63,7 @@ export class RemedyListComponent implements OnInit {
   remedies: Remedy[] = [];
   filteredRemedies: Remedy[] = [];
   selectedRemedy: Remedy | null = null;
-  categories: string[] = ['Immunity', 'Digestion', 'Skin Care', 'Detox'];
+  categories: string[] = ['Immunity', 'Digestion', 'Skin', 'Hair', 'Body'];
   selectedCategory: string = '';
 
   constructor(

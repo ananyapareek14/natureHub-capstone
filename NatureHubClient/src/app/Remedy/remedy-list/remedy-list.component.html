@@ -1,42 +1,34 @@
-<!-- <div class="container mt-4">
-  <div class="row">
-    <div *ngFor="let remedy of remedies" class="col-md-4 mb-4">
-      <div class="card h-100 shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">{{ remedy.Name }}</h5>
-          <p class="card-text">{{ remedy.Description }}</p>
-          <button class="btn btn-primary" [routerLink]="['/remedies', remedy.Id]">Know More</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
+<div class="remedy-list-container"></div> <!-- Background Layer -->
+<h2 class="text-center section-title">Explore Natural Remedies</h2>
 
-<div class="container mt-5">
-  <h2 class="text-center section-title">Explore Natural Remedies</h2>
-
-  <!-- Category Filters -->
-  <div class="text-center my-4">
+  <!-- Filter Buttons -->
+  <div class="text-center mb-4 filter-section">
     <button 
       *ngFor="let category of categories" 
-      class="btn filter-btn" 
-      [ngClass]="{ 'active': selectedCategory === category }" 
+      class="btn filter-btn"
+      [ngClass]="{ 'active': selectedCategory === category }"
       (click)="selectCategory(category)">
       {{ category }}
     </button>
-    <button class="btn filter-btn" [ngClass]="{ 'active': selectedCategory === '' }" (click)="clearFilter()">
-      All
-    </button>
+    <button class="btn filter-btn reset" (click)="clearFilter()">All</button>
   </div>
 
+<div class="container remedy-container">
   <div class="row">
-    <div *ngFor="let remedy of filteredRemedies" class="col-md-4 mb-4">
-      <div class="card h-100 remedy-card">
-        <img [src]="getImagePath(remedy.Name)" class="card-img-top" alt="{{ remedy.Name }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ remedy.Name }}</h5>
-          <p class="card-text">{{ remedy.Description }}</p>
-          <button class="btn btn-primary" [routerLink]="['/remedies', remedy.Id]">Know More</button>
+    <div *ngFor="let remedy of filteredRemedies" class="col-md-6 mb-4">
+      <div class="remedy-card h-100">
+        <div class="remedy-header">
+          <h5 class="remedy-title">{{ remedy.Name }}</h5>
+          <span class="category-badge">{{ remedy.Category }}</span>
+        </div>
+        <hr class="remedy-divider">
+        <div class="remedy-body">
+          <p class="remedy-text">{{ remedy.Description }}</p>
+        </div>
+        <div class="remedy-footer">
+          <button class="btn btn-readmore btn-sm" [routerLink]="['/remedies', remedy.Id]">
+            Read More
+          </button>
         </div>
       </div>
     </div>

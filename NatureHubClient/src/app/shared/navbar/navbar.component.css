@@ -1,3 +1,121 @@
+/* .navbar {
+    position: absolute; 
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    padding: 1rem 0;
+    transition: all 0.4s ease-in-out;
+    z-index: 1000;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.navbar.sticky {
+    position: fixed; 
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.navbar .nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    color: white !important;
+    padding: 0.5rem 1rem;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    opacity: 0.7 !important;
+}
+
+.btn-login, .btn-register {
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-login {
+    background: #2a9d8f; 
+    color: white;
+}
+
+.btn-login:hover {
+    background: #ecb859;
+    color: black;
+}
+
+.btn-register {
+    border: 2px solid #2a9d8f; 
+    color: white;
+}
+
+.btn-register:hover {
+    background: white;
+    color: black;
+}
+
+.cart-icon, .user-icon {
+    font-size: 1.1rem;
+    color: white !important;
+    display: flex;
+    align-items: center;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #ecb859; 
+    color: black;
+    font-size: 0.5rem;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 50%;
+    min-width: 8px;
+    text-align: center;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.cart-icon:hover .cart-badge {
+    transform: scale(1.1);
+}
+
+.dropdown-menu {
+    background: rgba(0, 0, 0, 0.85);
+    border: none;
+}
+
+.dropdown-item {
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background: #2a9d8f; 
+    color: black;
+}
+
+.d-flex.align-items-center {
+    gap: 1rem;
+} */
+
+
 .navbar {
     position: absolute; 
     width: 100%;
@@ -76,10 +194,30 @@
     color: black;
 }
 
-/* Cart Icon */
-.cart-icon {
-    font-size: 1.4rem;
+/* Cart & User Icons */
+.cart-icon, .user-icon {
+    font-size: 1.1rem;
     color: white !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Cart Dot Indicator */
+.cart-dot {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+    background: rgb(255, 77, 0);
+    border-radius: 50%;
+}
+
+
+/* Hover effect to make it pop slightly */
+.cart-icon:hover .cart-badge {
+    transform: scale(1.1);
 }
 
 /* Dropdown */
@@ -96,4 +234,9 @@
 .dropdown-item:hover {
     background: #2a9d8f; 
     color: black;
+}
+
+/* Align Cart & User Menu */
+.d-flex.align-items-center {
+    gap: 0.75rem; /* Reduced space for a compact look */
 }

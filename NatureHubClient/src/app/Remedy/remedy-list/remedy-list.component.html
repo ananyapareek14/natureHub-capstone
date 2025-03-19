@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
   <div class="row">
     <div *ngFor="let remedy of remedies" class="col-md-4 mb-4">
       <div class="card h-100 shadow-sm">
@@ -10,3 +10,35 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="container mt-5">
+  <h2 class="text-center section-title">Explore Natural Remedies</h2>
+
+  <!-- Category Filters -->
+  <div class="text-center my-4">
+    <button 
+      *ngFor="let category of categories" 
+      class="btn filter-btn" 
+      [ngClass]="{ 'active': selectedCategory === category }" 
+      (click)="selectCategory(category)">
+      {{ category }}
+    </button>
+    <button class="btn filter-btn" [ngClass]="{ 'active': selectedCategory === '' }" (click)="clearFilter()">
+      All
+    </button>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let remedy of filteredRemedies" class="col-md-4 mb-4">
+      <div class="card h-100 remedy-card">
+        <img [src]="getImagePath(remedy.Name)" class="card-img-top" alt="{{ remedy.Name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ remedy.Name }}</h5>
+          <p class="card-text">{{ remedy.Description }}</p>
+          <button class="btn btn-primary" [routerLink]="['/remedies', remedy.Id]">Know More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

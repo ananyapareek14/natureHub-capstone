@@ -1,10 +1,15 @@
 <div *ngIf="!shouldHideNavFooter()">
     <app-navbar></app-navbar>
-  </div>
-<app-toast></app-toast>
-<router-outlet></router-outlet>
+</div>
+
+  <app-toast></app-toast>
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
+
 <div *ngIf="!shouldHideNavFooter()">
     <app-footer></app-footer>
-  </div>
+</div>
 
   

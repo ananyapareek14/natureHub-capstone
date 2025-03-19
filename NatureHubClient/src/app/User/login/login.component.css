@@ -11,7 +11,7 @@
 
 .login-container {
     position: relative;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,6 +25,7 @@
     padding: 2rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     color: white;
+    margin-top: 150px;
 }
 
 .btn{
@@ -40,12 +41,12 @@
 
 .signup-text{
     color: white;
-    text-decoration: none;
+    transform: background 0.3s ease-in-out;
 }
 
 .signup-text :hover{
-    text-decoration: underline;
-}
+    color: rgb(180, 180, 180);
+} 
 
 .back-to-home {
     position: absolute;

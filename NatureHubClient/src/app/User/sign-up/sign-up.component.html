@@ -7,12 +7,13 @@
   <!-- Left: Signup Form -->
   <div class="signup-form">
     <div class="form-container">
-      <h3 class="text-center mb-4"><i class="bi bi-tree-fill"></i> Nature Hub</h3>
+      <h3 class="text-center "><i class="bi bi-tree-fill"></i> Nature Hub</h3>
+      <p class="text-center mb-4" style="opacity: 0.8;">Sign up</p>
 
       <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="text" id="name" class="form-control" placeholder="Enter your full name" [(ngModel)]="registerData.Name" name="name" required minlength="3" #nameInput="ngModel"/>
+          <input type="text" id="name" class="form-control input-style" placeholder="Enter your full name" [(ngModel)]="registerData.Name" name="name" required minlength="3" #nameInput="ngModel"/>
           <div class="text-danger" *ngIf="nameInput.invalid && nameInput.touched">
             <small *ngIf="nameInput.errors?.['required']">Name is required.</small>
             <small *ngIf="nameInput.errors?.['minlength']">Name must be at least 3 characters long.</small>
@@ -21,7 +22,7 @@
 
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" class="form-control"  placeholder="user@example.com" [(ngModel)]="registerData.Email" name="email" required email #emailInput="ngModel"/>
+          <input type="email" id="email" class="form-control input-style"  placeholder="user@example.com" [(ngModel)]="registerData.Email" name="email" required email #emailInput="ngModel"/>
           <div class="text-danger" *ngIf="emailInput.invalid && emailInput.touched">
             <small *ngIf="emailInput.errors?.['required']">Email is required.</small>
             <small *ngIf="emailInput.errors?.['email']">Enter a valid email address.</small>
@@ -30,7 +31,7 @@
 
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" id="password" class="form-control" placeholder="6+ characters" [(ngModel)]="registerData.Password" name="password" required minlength="6" #passwordInput="ngModel"/>
+          <input type="password" id="password" class="form-control input-style" placeholder="6+ characters" [(ngModel)]="registerData.Password" name="password" required minlength="6" #passwordInput="ngModel"/>
           <div class="text-danger" *ngIf="passwordInput.invalid && passwordInput.touched">
             <small *ngIf="passwordInput.errors?.['required']">Password is required.</small>
             <small *ngIf="passwordInput.errors?.['minlength']">Please try a longer password</small>
@@ -39,7 +40,7 @@
 
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirm Password</label>
-          <input type="password" id="confirmPassword" class="form-control" placeholder="Re-enter password" [(ngModel)]="confirmPassword" name="confirmPassword" required #confirmPasswordInput="ngModel"/>
+          <input type="password" id="confirmPassword" class="form-control input-style" placeholder="Re-enter password" [(ngModel)]="confirmPassword" name="confirmPassword" required #confirmPasswordInput="ngModel"/>
           <div class="text-danger" *ngIf="confirmPasswordInput.invalid && confirmPasswordInput.touched">
             <small *ngIf="confirmPasswordInput.errors?.['required']">Confirm Password is required.</small>
           </div>
@@ -59,7 +60,8 @@
       </form>
 
       <div class="text-center mt-3">
-        <a routerLink="/login">Already have an account? Login</a>
+        <!-- <a routerLink="/login"> Sign In</a> -->
+        <span>Already have an account? <a class="links" routerLink="/login"> Sign In</a></span>
       </div>
     </div>
   </div>

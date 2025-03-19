@@ -1,52 +1,13 @@
-/*
-.signup-container {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.1); 
-  margin-top: 70px;
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  color: white;
-}
-
-.btn {
-  background-color: #2a9d8f;
-  color: black;
-  transition: background 0.3s ease-in-out;
-}
-
-.btn:hover {
-  background: #ecb859;
-  color: black;
-}
-
-a {
-  color: white;
-} */
-
-
-/* Hide Navbar on Signup Page */
 .hide-navbar nav {
   display: none;
 }
 
-/* Full Page Layout */
 .signup-page {
   display: flex;
-  height: 100vh;
+  height: 80vh;
   background-color: white;
 }
 
-/* Left Side: Signup Form */
 .signup-form {
   width: 40%;
   display: flex;
@@ -55,8 +16,9 @@ a {
   background-color: white;
 }
 
-/* Signup Form Container */
 .form-container {
+  position: relative;
+  top: 80px;
   width: 80%;
   max-width: 400px;
   padding: 2rem;
@@ -91,8 +53,28 @@ a {
   padding: 6px 12px;
 }
 
-/* .back-to-home {
-  font-size: 14px;
-  padding: 6px 12px;
-} */
+.links{
+  color: #2a9d8f;
+  text-decoration: none;
+  transform: background 0.3s ease-in-out;
+}
+
+.links:hover{
+  text-decoration: underline;
+  color: #1f746a;
+} 
+
+.input-style ::placeholder {
+  color: rgb(162, 162, 162);
+}
+
+.input-style{
+  border: 1px solid rgb(221, 221, 221);
+  transform: background 0.3s ease-in-out;
+}
+
+.input-style:hover{
+  border: 1px solid #2a9d8f;
+}
+
 

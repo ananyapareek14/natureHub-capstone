@@ -1,18 +1,40 @@
-<div class="container mt-4">
-  <h2 class="mb-4">Health Tips</h2>
+<div class="health-tips-list-container"></div>
+<div class="health-tips-container">
+  <!-- Section Title -->
+  <h2 class="section-title">Health Tips</h2>
 
-  <div *ngIf="healthTips.length === 0" class="alert alert-info text-center">
-    No health tips found for this category.
+  <!-- Filter Buttons -->
+  <div class="filter-section">
+    <button
+      *ngFor="let category of categories"
+      class="filter-btn"
+      [class.active]="selectedCategory === category"
+      (click)="filterByCategory(category)"
+    >
+      {{ category }}
+    </button>
+    <button class="filter-btn reset" (click)="resetFilter()">All</button>
   </div>
 
-  <div class="list-group">
-    <button
-      *ngFor="let tip of healthTips"
-      class="list-group-item list-group-item-action"
+  <!-- Grid-Based Tips Display -->
+  <div class="grid-container">
+    <div
+      *ngFor="let tip of filteredHealthTips"
+      class="health-card"
       (click)="viewDetails(tip.Id)"
     >
-      <h5>{{ tip.Title }}</h5>
-      <p class="text-muted">Category: {{ tip.Category }}</p>
-    </button>
+      <div class="card-header">
+        <h5 class="tip-title">{{ tip.Title }}</h5>
+        <span class="category-badge">{{ tip.Category }}</span>
+      </div>
+      <p class="tip-text">
+        {{ tip.Content }} <!-- Show a short description -->
+      </p>
+    </div>
+  </div>
+
+  <!-- No Results Message -->
+  <div *ngIf="filteredHealthTips.length === 0" class="alert alert-info">
+    No health tips found for this category.
   </div>
 </div>

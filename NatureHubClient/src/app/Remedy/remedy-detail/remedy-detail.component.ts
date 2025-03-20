@@ -10,13 +10,14 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   templateUrl: './remedy-detail.component.html',
   styleUrl: './remedy-detail.component.css',
 })
+
 export class RemedyDetailComponent implements OnInit {
-  remedy: Remedy | null = null; // Instead of repeating the model
-  private sanitizer: DomSanitizer;
+  remedy: Remedy | null = null; // Use the model correctly
 
   constructor(
     private route: ActivatedRoute,
-    private remedyService: RemedyServiceService
+    private remedyService: RemedyServiceService,
+    private sanitizer: DomSanitizer // ✅ Injecting DomSanitizer here
   ) {}
 
   ngOnInit() {
@@ -32,10 +33,11 @@ export class RemedyDetailComponent implements OnInit {
     }
   }
 
-  // ✅ Function to replace \n with <br>
-  formatText(text: string): SafeHtml {
-    // Ensure proper newline conversion
-    if (!text) return '';
-    return this.sanitizer.bypassSecurityTrustHtml(text.replace(/\\n/g, '<br>'));
+  formatText(text: string | null | undefined): SafeHtml {
+    if (!text) {
+      return '';
+    }
+    const formattedText = text.replace(/\\n/g, '<br>'); // Replace \n with <br>
+    return this.sanitizer.bypassSecurityTrustHtml(formattedText); // Sanitize HTML
   }
 }

@@ -1,40 +1,31 @@
-<div class="row mt-4">
-  <div class="col-md-4 mb-4">
-    <div class="card h-100 shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title">{{ remedy.Name }}</h5>
-        <p class="card-text">{{ remedy.Description }}</p>
-        <p><strong>🍃 Ingredients:<br></strong> {{ remedy.Ingredients }}</p>
-        
-        <p><strong>✨ Benefits:<br></strong> 
-          <span [innerHTML]="formatText(remedy.Benefits)"></span>
-        </p>
+<div class="remedy-detail-container"></div> <!-- ✅ Background container -->
 
-        <p><strong>📝 Preparation:<br></strong>  
-          <span [innerHTML]="formatText(remedy.PreparationMethod)"></span>
-        </p>
+<div class="container remedy-container">
+  <h2 class="text-center section-title">Remedy Details</h2>
 
-        <p><strong>💡 Usage:<br></strong>  
-          <span [innerHTML]="formatText(remedy.UsageInstructions)"></span>
-        </p>
+  <div class="remedy-card">
+    <div class="remedy-header">
+      <h5 class="remedy-title">{{ remedy?.Name }}</h5>
+      <span class="category-badge">{{ remedy?.Category }}</span>
+    </div>
+    <hr>
+    <div class="remedy-body">
+      <p class="remedy-text"><strong>🌱 Description:</strong></p>
+      <p class="para-text" [innerHTML]="formatText(remedy?.Description)"></p>
 
-        <p class="text-muted small">📅 Created on: {{ remedy.CreatedDate | date:'MMM d, y' }}</p>
-      </div>
+      <p class="remedy-text"><strong>🍃 Ingredients:</strong></p>
+      <p class="para-text" >{{ remedy?.Ingredients }}</p>
+
+      <p class="remedy-text"><strong>✨ Benefits:</strong></p>
+      <p class="para-text" [innerHTML]="formatText(remedy?.Benefits)"></p>
+
+      <p class="remedy-text"><strong>📝 Preparation:</strong></p>
+      <p class="para-text" [innerHTML]="formatText(remedy?.PreparationMethod)"></p>
+
+      <p class="remedy-text"><strong>💡 Usage:</strong></p>
+      <p class="para-text" [innerHTML]="formatText(remedy?.UsageInstructions)"></p>
+
+      <p class="para-text small">📅 Created on: {{ remedy?.CreatedDate | date:'MMM d, y' }}</p>
     </div>
   </div>
 </div>
-
-
-<!-- <div *ngIf="remedy">
-  <h2>{{ remedy.Name }}</h2>
-  <p><strong>✨ Benefits:</strong></p>
-  <p [innerHTML]="remedy.Benefits.replace(/\n/g, '<br>')"></p>
-
-  <p><strong>📝 Preparation:</strong></p>
-  <p [innerHTML]="remedy.PreparationMethod.replace(/\n/g, '<br>')"></p>
-
-  <p><strong>💡 Usage:</strong></p>
-  <p [innerHTML]="remedy.UsageInstructions.replace(/\n/g, '<br>')"></p>
-
-  <p class="text-muted small">📅 Created on: {{ remedy.CreatedDate | date:'MMM d, y' }}</p>
-</div> -->

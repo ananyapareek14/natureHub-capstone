@@ -75,16 +75,13 @@ namespace NatureHubApi.Controllers
             return Ok("Cart item updated successfully.");
         }
 
-
-
-        // ✅ Add a product to the cart
         [HttpPost]
         public async Task<IActionResult> AddToCart([FromBody] CartItemDto cartItemDto)
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out Guid userId))
             {
-                return Unauthorized("Invalid or missing User ID in token.");
+                return Unauthorized(new { message = "Invalid or missing User ID in token." });
             }
 
             cartItemDto.UserId = userId;
@@ -109,19 +106,18 @@ namespace NatureHubApi.Controllers
                 await _cartRepository.AddToCartAsync(newCartItem);
             }
 
-            return Ok("Product added to cart successfully.");
+            // ✅ Return JSON instead of plain text
+            return Ok(new { message = "Product added to cart successfully." });
         }
 
-
-        // ✅ Remove a product from the cart
         [HttpDelete("{cartItemId}")]
         public async Task<IActionResult> RemoveFromCart(int cartItemId)
         {
             var result = await _cartRepository.RemoveFromCartAsync(cartItemId);
             if (!result)
-                return NotFound("Cart item not found.");
+                return NotFound(new { message = "Cart item not found." });
 
-            return Ok("Item removed from cart.");
+            return Ok(new { message = "Item removed from cart." });
         }
     }
 }
